@@ -23,8 +23,9 @@ Things you may want to cover:
 
 ### TODO List:
 - [x] Basic Turbo CRUD
-- [ ] Likes
+- [x] Likes
 - [ ] Live broadcast editions and likes
+- [ ] Like/Unlike
 - [ ] Comments
 - [ ] API
 

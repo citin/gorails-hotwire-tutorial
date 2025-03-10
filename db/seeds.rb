@@ -8,4 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create!(email_address: "user@example.com", password: "password123", password_confirmation: "password123")
+puts 'Creating users...'
+User.create(email_address: 'user@example.com', password: 'password123', password_confirmation: 'password123')
+User.create(email_address: 'user2@example.com', password: 'password123', password_confirmation: 'password123')
+
+puts 'Creating posts...'
+5.times do |i|
+  Post.create(body: "Post #{i + 1}: #{Faker::Lorem.paragraph(sentence_count: 5)}", author: User.first)
+  Post.create(body: "Post #{i + 1}: #{Faker::Lorem.paragraph(sentence_count: 5)}", author: User.last)
+end

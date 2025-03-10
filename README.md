@@ -21,4 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
+### TODO List:
+- [x] Basic Turbo CRUD
+- [ ] Likes
+- [ ] Live broadcast editions and likes
+- [ ] Comments
+- [ ] API
+
 * ...

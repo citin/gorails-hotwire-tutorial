@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  # Likeable
+  concern :likeable do
+    resource :like, only: [ :update ], defaults: { resource: @scope.frame.dig(:controller) }
+  end
+
   # Authentication
   resource :session
   resources :passwords, param: :token
 
   # Resource
-  resources :posts do
-    resources :likes, only: [ :create ]
-  end
+  resources :posts, concerns: :likeable
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_08_060930) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_13_070129) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id"], name: "index_likes_on_record"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "body"
-    t.integer "likes", default: 0, null: false
+    t.integer "likes_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id", null: false
@@ -37,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_060930) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users", column: "author_id"
   add_foreign_key "sessions", "users"
 end

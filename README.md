@@ -24,9 +24,11 @@ Things you may want to cover:
 ### TODO List:
 - [x] Basic Turbo CRUD
 - [x] Likes
-- [ ] Live broadcast editions and likes
-- [ ] Like/Unlike
-- [ ] Comments
+- [x] Live broadcast editions
+- [x] Like/Unlike
+- [ ] Topics
+- [ ] Flash messages https://www.hotrails.dev/turbo-rails/flash-messages-hotwire 
+- [ ] Tailwind CSS
 - [ ] API
 
 * ...

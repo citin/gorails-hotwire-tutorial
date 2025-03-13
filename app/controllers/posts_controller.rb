@@ -26,8 +26,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @post.broadcast_prepend_to "posts", locals: { post: @post, is_author: false }
+
         format.turbo_stream
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +42,10 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        @post.broadcast_update_to "posts", locals: { post: @post, is_author: false }
+
+        format.turbo_stream
+        format.html { redirect_to @post, notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,10 +57,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy!
-
+    @post.broadcast_remove_to "posts"
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to posts_path, status: :see_other, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end

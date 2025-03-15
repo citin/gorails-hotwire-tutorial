@@ -1,9 +1,8 @@
 <%= turbo_frame_tag record, :likes do %>
   <div>
-    <% button_text = record.liked_by?(Current.user) ? "Unlike" : "Like" %>
-    <% button_class = record.liked_by?(Current.user) ? "bg-gray-200 hover:bg-gray-300 text-gray-500" : "bg-blue-500 hover:bg-blue-600 text-white" %>
+    <% button_class = record.liked_by?(Current.user) ? "bg-green-500 hover:bg-green-600 text-white" : "bg-blue-200 hover:bg-blue-300 text-blue-500" %>
     <%= button_to [record, :like], class: "rounded-md px-4 py-2 #{button_class}", method: :patch do %>
-      <%= button_text %> (<%= render partial: "shared/likes_count", locals: { record: record } %>)
+      Like (<%= render partial: "shared/likes_count", locals: { record: record } %>)
     <% end %>
   </div>
 <% end %>

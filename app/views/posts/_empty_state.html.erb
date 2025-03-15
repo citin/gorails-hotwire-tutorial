@@ -1,13 +1,13 @@
-<% if Post.count == 0 %>
+<% unless topic.posts.exists? %>
   <div class="empty-state">
-    <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden my-4">
+    <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden my-4 flex justify-center items-center text-center">
       <div class="p-6">
         <div class="space-y-4">
-          <div class="pb-4">
+          <div class="">
             You don't have any posts yet!
           </div>
-          <div class="pb-4 flex items-center justify-between">
-            <%= link_to "Add post", new_post_path, class: "rounded-md px-4 py-2 text-white bg-red-600 hover:bg-red-500 transition-colors duration-200 font-medium cursor-pointer",
+          <div class="">
+            <%= link_to "Add post", [:new, topic, :post], class: "rounded-md px-4 py-2 text-white bg-red-600 hover:bg-red-500 transition-colors duration-200 font-medium cursor-pointer",
                                   data: { turbo_frame: dom_id(Post.new) } %>
           </div>
         </div>

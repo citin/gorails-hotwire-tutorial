@@ -2,9 +2,9 @@
 <div class="md:w-2/3 w-full">
   <%= turbo_frame_tag @post do %>
     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden my-4">
-      <h1 class="font-bold text-4xl">New post</h1>
+      <h1 class="p-6 pb-0 font-bold text-4xl">New post</h1>
       <div class="p-6">
-        <%= render "form", post: @post %>
+        <%= render "form", post: @post, topic: @topic %>
       </div>
     </div>
   <% end %>

@@ -9,11 +9,16 @@
 #   end
 
 puts 'Creating users...'
-User.create(email_address: 'user@example.com', password: 'password123', password_confirmation: 'password123')
-User.create(email_address: 'user2@example.com', password: 'password123', password_confirmation: 'password123')
+user_1 = User.create(email_address: 'user@example.com', password: 'password', password_confirmation: 'password')
+user_2 = User.create(email_address: 'user2@example.com', password: 'password', password_confirmation: 'password')
+
+puts 'Creating topics...'
+topic_1 = Topic.create(name: 'Cars')
+topic_2 = Topic.create(name: 'Food')
 
 puts 'Creating posts...'
-5.times do |i|
-  Post.create(body: "Post #{i + 1}: #{Faker::Lorem.paragraph(sentence_count: 5)}", author: User.first)
-  Post.create(body: "Post #{i + 1}: #{Faker::Lorem.paragraph(sentence_count: 5)}", author: User.last)
+15.times do |i|
+  topic = Topic.all.sample
+  user = User.all.sample
+  Post.create(body: "#{ topic.name }: Post #{i + 1}: #{Faker::Lorem.paragraph(sentence_count: 5)}", author: user, topic: topic)
 end

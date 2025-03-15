@@ -26,9 +26,11 @@ Things you may want to cover:
 - [x] Likes
 - [x] Live broadcast editions
 - [x] Like/Unlike
-- [ ] Topics
+- [x] Topics
+- [ ] Pagination
 - [ ] Flash messages https://www.hotrails.dev/turbo-rails/flash-messages-hotwire 
 - [ ] Tailwind CSS
+- [ ] Notifications
 - [ ] API
-
+- [ ] Generic Empty State
 * ...

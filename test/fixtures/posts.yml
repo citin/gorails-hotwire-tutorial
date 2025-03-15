@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
-  likes: 1
+  body: "This is a test post"
+  topic: one
+  author: one
 
 two:
-  body: MyText
-  likes: 1
+  body: "This is another test post"
+  topic: two
+  author: two

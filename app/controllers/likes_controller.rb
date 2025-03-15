@@ -10,7 +10,7 @@ class LikesController < ApplicationController
       @record.like(Current.user)
     end
 
-    @record.broadcast_update_to "posts",
+    @record.broadcast_update_to @record.model_name.plural,
       target: dom_id(@record, :likes_count),
       partial: "shared/likes_count",
       locals: { record: @record }

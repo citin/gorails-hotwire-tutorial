@@ -1,0 +1,16 @@
+<% content_for :title, "Topics" %>
+<div class="w-full">
+  <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden my-4 p-6 flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Topics</h1>
+    <%= link_to "New topic",
+              new_topic_path,
+              class: "btn btn-blue",
+              data: { turbo_frame: dom_id(Topic.new) } %>
+  </div>
+  <%= turbo_frame_tag Topic.new  %>
+  <%= turbo_frame_tag :topics do %>
+    <% @topics.each do |topic| %>
+      <%= render "topics/topic", topic: topic %>
+    <% end %>
+  <% end %>
+</div>

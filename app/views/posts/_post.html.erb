@@ -10,7 +10,7 @@
         </div>
         <div class="pb-4 flex items-center justify-between">
           <%= render partial: "shared/likes", locals: { record: post } %>
-          <%= render partial: "posts/post_actions", locals: { post: post, is_author: is_author } %>
+          <%= render partial: "posts/post/post_actions", locals: { post: post, is_author: is_author } %>
         </div>
       </div>
     </div>

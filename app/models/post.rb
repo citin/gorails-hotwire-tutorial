@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   include Likeable
 
   belongs_to :author, class_name: "User"
+  belongs_to :topic
 
   validates :body, presence: true
 

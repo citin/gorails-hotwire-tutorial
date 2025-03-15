@@ -1,0 +1,2 @@
+<%= turbo_stream.update Topic.new, "" %>
+<%= turbo_stream.prepend "topics", partial: "topics/topic", locals: { topic: @topic } %>

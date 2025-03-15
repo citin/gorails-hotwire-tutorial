@@ -1,6 +1,4 @@
 <%= turbo_stream.remove @post %>
-<% if Post.count == 0 %>
-  <%= turbo_stream.update Post.new do %>
-    <%= render "posts/empty_state" %>
-  <% end %>
+<%= turbo_stream.update Post.new do %>
+  <%= render "posts/empty_state", topic: @topic %>
 <% end %>

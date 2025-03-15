@@ -2,7 +2,7 @@
   <div>
     <% button_class = record.liked_by?(Current.user) ? "bg-green-500 hover:bg-green-600 text-white" : "bg-blue-200 hover:bg-blue-300 text-blue-500" %>
     <%= button_to [record, :like], class: "rounded-md px-4 py-2 #{button_class}", method: :patch do %>
-      Like (<%= render partial: "shared/likes_count", locals: { record: record } %>)
+      Like (<span id="<%= dom_id(record, :likes_count) %>"><%= record.likes_count %></span>)
     <% end %>
   </div>
 <% end %>

@@ -1,2 +1,2 @@
 <%= turbo_stream.update Post.new, "" %>
-<%= turbo_stream.prepend "posts", partial: "posts/post", locals: { post: @post, is_author: true } %>
+<%= turbo_stream.prepend [@topic, :posts], partial: "posts/post", locals: { post: @post, is_author: true } %>

@@ -4,18 +4,19 @@
       <h1 class="font-bold text-4xl"><%= @topic.name %></h1>
     </div>
     <div>
-      <%= link_to "Back to topics", topics_path, class: "btn btn-blue" %>
-      <%= link_to "New post", [:new, @topic, :post], class: "btn btn-red",
+      <%= link_to "Back to topics", topics_path, class: "bg-blue-500 text-white px-4 py-2 rounded-md" %>
+      <%= link_to "New post", [:new, @topic, :post], class: "bg-red-500 text-white px-4 py-2 rounded-md",
                   data: { turbo_frame: dom_id(Post.new) } %>
     </div>
   </div>
 </div>
-<%= turbo_stream_from :posts %>
 <%= turbo_frame_tag Post.new do %>
   <%= render "posts/empty_state", topic: @topic %>
 <% end %>
 <h2>Posts</h2>
-<%= turbo_frame_tag :posts do %>
+<%= turbo_stream_from :posts %>
+<%= turbo_stream_from Current.user, :posts %>
+<%= turbo_frame_tag @topic, :posts do %>
   <% @posts.each do |post| %>
     <%= render "posts/post", post: post, is_author: post.is_author?(Current.user) %>
   <% end %>

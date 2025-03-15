@@ -1,6 +1,4 @@
 class LikesController < ApplicationController
-  include ActionView::RecordIdentifier
-
   before_action :set_record
 
   def update
@@ -10,12 +8,7 @@ class LikesController < ApplicationController
       @record.like(Current.user)
     end
 
-    @record.broadcast_update_to @record.model_name.plural,
-      target: dom_id(@record, :likes_count),
-      partial: "shared/likes_count",
-      locals: { record: @record }
-
-    render partial: "shared/likes", locals: { record: @record }
+    Broadcasters::Likes::Updated.new(@record).()
   end
 
   private
